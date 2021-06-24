@@ -1,0 +1,9 @@
+.container__home{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.button__holder{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
