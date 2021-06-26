@@ -48,6 +48,13 @@ function Home(props) {
         Computer
       </button> */}
       </div>
+      <div className="rules">
+      <ul>
+        <li>
+       <b>Do Not Use Keyboard .</b> If we find frequent use of keyboard test will be auto-submitted 
+       </li>
+       </ul>
+      </div>
     </div>
   );
 }
