@@ -8,6 +8,7 @@
     font-size: medium;
     margin: 1.5em;
     /* color: black; */
+  
 }
 .questionsContainer{
     margin: 1em;
@@ -19,9 +20,9 @@
   border-radius: .5em;
   margin: 1.5em;
   padding: 1em;
-  box-shadow: -2px 3px 24px 0px rgba(0,0,0,0.75);
--webkit-box-shadow: -2px 3px 24px 0px rgba(0,0,0,0.75);
--moz-box-shadow: -2px 3px 24px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 11px 0px rgba(198,198,198,0.43);
+  -webkit-box-shadow: 2px 2px 11px 0px rgba(198,198,198,0.43);
+  -moz-box-shadow: 2px 2px 11px 0px rgba(198,198,198,0.43);
 }
 .question{
     margin:1em;

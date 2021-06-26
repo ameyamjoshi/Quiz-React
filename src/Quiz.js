@@ -19,21 +19,39 @@ function Quiz() {
     setscore(cnt);
     localStorage.clear();
     setdisabled(false);
+    setagreeterms("Agree Terms to Continue")
+    settopic("0")
+    setstarttest(false)
   };
- 
-  var cnt=0;
-
+const [agreeterms, setagreeterms] = useState("Agree Terms to Continue")
+  var cnt = 0;
+  const handleAgreeClick = () => {
+    console.log("Agreed");
+    if(agreeterms==="Agree Terms to Continue"){
+    setagreeterms("Terms Agreed ")
+  }
+  if(agreeterms==="Terms Agreed "){
+    setagreeterms("Click to agree terms ")
+  }
+  if(agreeterms==="Click to agree terms "){
+    setagreeterms("Terms Agreed ")
+  }
+  };
   document.onkeydown = function (e) {
     if (e) {
-      if(cnt<3 && Screen==="questions"){
+      if (cnt < 3 && Screen === "questions") {
         cnt++;
-        alert("Your test will be auto-submitted after using keyboard for "+(3-cnt)+" more times" );
+        alert(
+          "Your test will be auto-submitted after using keyboard for " +
+            (3 - cnt) +
+            " more times"
+        );
+      } else if (cnt >= 3 && Screen === "questions") {
+        alert(
+          "You have exceeded the warnings . You test will be auto submitted"
+        );
+        handleSubmit();
       }
-      else if (cnt>=3 && Screen==="questions"){
-        alert("You have exceeded the warnings . You test will be auto submitted" );
-        handleSubmit()
-      }
-      
     }
     if (e.keyCode == 123) {
       return false;
@@ -73,36 +91,44 @@ function Quiz() {
     if (name === "natureandscience") return 17;
     if (name === "natureandscience") return 17;
     if (name === "natureandscience") return 17;
-    
   };
   const handleClick = (e) => {
     console.log("Clicked" + e.target.id);
-
+    var z=document.getElementById(e.target.id);
+    console.log(z)
+    if(z){
+      z.style.opacity="1";
+      
+    }
+    
     setdisabled(true);
     settopic(get_number(e.target.id));
     setScreen("questions");
   };
   const [disabled1, setdisabled] = useState("");
-  const [topic, settopic] = useState();
+  const [topic, settopic] = useState("0");
   const [Questions, setQuestions] = useState();
-  const handleButtonClick = (key,key1) => {
+  const handleButtonClick = (key, key1) => {
     console.log(key);
     console.log();
     var x = document.getElementsByClassName(key);
     console.log(x);
-    var y=document.getElementsByClassName(key1);
-    console.log(y)
+    var y = document.getElementsByClassName(key1);
+    console.log(y);
 
     if (x) {
       // x.style.backgroundColor="#74ef97";
       x[0].style.backgroundColor = "#74ef97";
     }
-    if(y){
-      y[0].style.opacity="0.7"
-      y[0].style.pointerEvents="none" ;
-
+    if (y) {
+      y[0].style.opacity = "0.7";
+      y[0].style.pointerEvents = "none";
     }
   };
+  const [starttest, setstarttest] = useState(false)
+  const handlestart=()=>{
+    setstarttest(true)
+  }
   useEffect(() => {
     if (isMount) {
       console.log("First Render");
@@ -114,13 +140,15 @@ function Quiz() {
   return (
     <div>
       {Screen === "submitted" ? (
-        <div style={{textAlign:"center"}}>Your Score for last is {score}</div>
+        <div style={{ textAlign: "center" }}>
+          Your Score for last test is {score}
+        </div>
       ) : (
         <h1></h1>
       )}
       <div className='header__buttons'>
         <div className='questionsContainer'>
-          {Screen === "questions" && Questions ? (
+          {Screen === "questions" &&agreeterms==="Terms Agreed " && starttest && Questions ? (
             <div>
               <h2>You have selected {topic} for quiz . All the best </h2>
               {Questions["results"].map((question, index) => {
@@ -141,6 +169,9 @@ function Quiz() {
                               className={`question${index}option${index1}`}
                               style={{
                                 backgroundColor: `${optionSelected}`,
+                                letterSpacing: ".1em",
+                                fontFamily: "Hind, sans-serif",
+                                fontWeight: "400",
                               }}
                               id={incorrect}
                               key1={`question${index}option${index1}`}
@@ -155,10 +186,12 @@ function Quiz() {
                                 );
                                 console.log(`question${index}option${index1}`);
                                 handleButtonClick(
-                                  `question${index}option${index1}`,`question${index}`
+                                  `question${index}option${index1}`,
+                                  `question${index}`
                                 );
                               }}>
                               {incorrect}
+
                               {/* {selected?<h1></h1>:<h2>Not Selected</h2>} */}
                             </button>
                           </div>
@@ -169,6 +202,8 @@ function Quiz() {
                       className={`question${index}option3 options1`}
                       style={{
                         backgroundColor: `${optionSelected}`,
+                        letterSpacing: ".1em",
+                        fontFamily: "Hind, sans-serif",
                       }}
                       onClick={(e) => {
                         // setoptionSelected(...optionSelected, `${e.target.parentNode.parentNode.parentNode.getAttribute("postid")} `+incorrect );
@@ -178,7 +213,10 @@ function Quiz() {
                           3
                         );
 
-                        handleButtonClick(`question${index}option3`,`question${index}`);
+                        handleButtonClick(
+                          `question${index}option3`,
+                          `question${index}`
+                        );
                       }}>
                       {question.correct_answer}
                     </button>
@@ -192,12 +230,17 @@ function Quiz() {
             </div>
           ) : (
             <div>
-              <Home handleClick={handleClick} />
+              <Home
+                handleClick={handleClick}
+                handleAgreeClick={handleAgreeClick}
+                button_content={agreeterms}
+                topic={topic}
+                handlestart={handlestart}
+              />
             </div>
           )}
         </div>
       </div>
-      
     </div>
   );
 }
