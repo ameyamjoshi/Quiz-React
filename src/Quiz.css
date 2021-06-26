@@ -16,7 +16,7 @@
 .question__card{
     /* background-color: aqua; */
   /* border: .1em solid black; */
-  border-radius: 1em;
+  border-radius: .5em;
   margin: 1.5em;
   padding: 1em;
   box-shadow: -2px 3px 24px 0px rgba(0,0,0,0.75);
@@ -61,3 +61,18 @@
     background-color: #74ef97;
     cursor: pointer;
 }
+.header__buttons>button{
+    letter-spacing: .1em;
+}
+@media screen and (max-width: 600px) {
+    .button1{
+        background-color: white;
+        border: none;
+        cursor:pointer;
+        padding: .5em;
+        background-color:#1edf98;
+        border-radius: .3em;
+        font-size: small;
+        margin: 1em;
+    }
+  }

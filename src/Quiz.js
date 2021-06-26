@@ -20,9 +20,20 @@ function Quiz() {
     localStorage.clear();
     setdisabled(false);
   };
+ 
+  var cnt=0;
+
   document.onkeydown = function (e) {
     if (e) {
-      alert("How dare you use keyboard");
+      if(cnt<3 && Screen==="questions"){
+        cnt++;
+        alert("Your test will be auto-submitted after using keyboard for "+(3-cnt)+" more times" );
+      }
+      else if (cnt>=3 && Screen==="questions"){
+        alert("You have exceeded the warnings . You test will be auto submitted" );
+        handleSubmit()
+      }
+      
     }
     if (e.keyCode == 123) {
       return false;
@@ -58,6 +69,11 @@ function Quiz() {
     if (name === "computer_button") return 18;
     if (name === "video_games_button") return 15;
     if (name === "natureandscience") return 17;
+    if (name === "sports") return 21;
+    if (name === "natureandscience") return 17;
+    if (name === "natureandscience") return 17;
+    if (name === "natureandscience") return 17;
+    
   };
   const handleClick = (e) => {
     console.log("Clicked" + e.target.id);
@@ -97,6 +113,11 @@ function Quiz() {
 
   return (
     <div>
+      {Screen === "submitted" ? (
+        <div style={{textAlign:"center"}}>Your Score for last is {score}</div>
+      ) : (
+        <h1></h1>
+      )}
       <div className='header__buttons'>
         <div className='questionsContainer'>
           {Screen === "questions" && Questions ? (
@@ -176,11 +197,7 @@ function Quiz() {
           )}
         </div>
       </div>
-      {Screen === "submitted" ? (
-        <div>Submitted The test Your Score is {score}</div>
-      ) : (
-        <h1></h1>
-      )}
+      
     </div>
   );
 }

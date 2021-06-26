@@ -6,4 +6,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    
+
 }
+.button__holder>button{
+    letter-spacing: .09em;
+}
+@media screen and (max-width: 600px) {
+    .container__home>h1{
+        font-size: 1em;
+    }
+    .rules>ul>li{
+        font-size: small;
+        margin-left: -15%;
+    }
+  }

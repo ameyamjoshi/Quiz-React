@@ -26,6 +26,13 @@ function Home(props) {
         onClick={props.handleClick}>
         Video Games
       </button>
+      <button
+        // disabled={disabled1}
+        id='sports'
+        className='button1'
+        onClick={props.handleClick}>
+        Sports
+      </button>
       {/* <button
         // disabled={disabled1}
         id='computer_button'
