@@ -9,7 +9,7 @@ function Home(props) {
         // disabled={disabled1}
         id='computer_button'
         className='button1'
-        style={{opacity:".8"}}
+        style={{opacity:".7"}}
         onClick={props.handleClick}>
         Computer
       </button>
@@ -17,7 +17,7 @@ function Home(props) {
         // disabled={disabled1}
         id='natureandscience'
         className='button1'
-        style={{opacity:".8"}}
+        style={{opacity:".7"}}
         onClick={props.handleClick}>
         Nature & Science
       </button>
@@ -25,7 +25,7 @@ function Home(props) {
         // disabled={disabled1}
         id='video_games_button'
         className='button1'
-        style={{opacity:".8"}}
+        style={{opacity:".7"}}
         onClick={props.handleClick}>
         Video Games
       </button>
@@ -33,7 +33,7 @@ function Home(props) {
         // disabled={disabled1}
         id='sports'
         className='button1'
-        style={{opacity:".8"}}
+        style={{opacity:".7"}}
         onClick={props.handleClick}>
         Sports
       </button>

@@ -39,7 +39,7 @@ const [agreeterms, setagreeterms] = useState("Agree Terms to Continue")
   };
   document.onkeydown = function (e) {
     if (e) {
-      if (cnt < 3 && Screen === "questions") {
+      if (cnt < 3 && Screen === "questions" &&agreeterms==="Terms Agreed " && starttest) {
         cnt++;
         alert(
           "Your test will be auto-submitted after using keyboard for " +
@@ -70,7 +70,7 @@ const [agreeterms, setagreeterms] = useState("Agree Terms to Continue")
     }
   };
 
-  // document.addEventListener("contextmenu", (event) => event.preventDefault());
+  document.addEventListener("contextmenu", (event) => event.preventDefault());
 
   const [optionSelected, setoptionSelected] = useState();
   const [Screen, setScreen] = useState("home");
